@@ -35,6 +35,9 @@ y %>%
   ggplot(aes(x = throws, y = count)) +
     geom_col() + 
     scale_x_continuous(breaks = 2:12)
+
+z = tibble(throws = map(rep(1:10), ~list(map_int(rep(2, 6), roll_two_dice)))) %>%
+  mutate(winners = 1) #Some code which says "count the number of winners in the list
 ```
 
 
