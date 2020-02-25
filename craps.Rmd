@@ -1,0 +1,30 @@
+---
+title: "Craps"
+author: "James Hutt"
+date: "25/02/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+
+roll_one_die <- function() {
+  sample(1:6,1,TRUE)
+}
+
+roll_two_dice <- function(n = 2) {
+  sum(sample(1:6,n,TRUE))
+}
+
+map_int(1:10, ~ roll_two_dice())
+
+x <- tibble(throws = map_int(rep(2, 10), roll_two_dice))
+
+```
+
+
+
