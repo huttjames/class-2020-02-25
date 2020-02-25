@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-```{r}
+```{r echo=FALSE}
 
 roll_one_die <- function() {
   sample(1:6,1,TRUE)
@@ -26,5 +26,15 @@ x <- tibble(throws = map_int(rep(2, 10), roll_two_dice))
 
 ```
 
+```{r echo=FALSE}
+y = tibble(throws = map_int(rep(2, 1000000), roll_two_dice)) 
+
+y %>%
+  group_by(throws) %>%
+  summarise(count = n()) %>%
+  ggplot(aes(x = throws, y = count)) +
+    geom_col() + 
+    scale_x_continuous(breaks = 2:12)
+```
 
 
